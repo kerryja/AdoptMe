@@ -1,0 +1,30 @@
+<% layout("/layouts/boilerplate") %>
+	<h1>AdoptMe</h1>
+	<% for (let animal of animals) { %>
+		<% if (animal.photos && animal.photos.length > 0 && animal.photos[0].large && animal.status === 'adoptable')  { %>
+		<div class="card mb-3">
+			<div class="row">
+				<div class="col-sm">
+					<img class="img-fluid" alt="" src="<%= animal.photos[0].large %>" />
+				</div>
+				<div class="col-md-8">
+					<div class="card-body">
+						<h5 class="card-title">
+							<%= animal.name %>
+						</h5>
+						<p class="card-text">
+							<%= animal.age %>
+						</p>
+						<p class="card-text">
+							<small class="text-muted">
+								<% if (animal.contact.address.city) { %>
+									<%= animal.contact.address.city %>, <%= animal.contact.address.state %>
+								<% } %>	
+							</small>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<% } %>
+	<% } %>	
